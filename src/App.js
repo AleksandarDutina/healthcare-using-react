@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Navbar from "./components/Navbar";
+import Patients from "./components/Patients.js";
+import MainContent from "./components/MainContent.js";
+import RightAside from "./components/RightAside";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
 
-function App() {
+const App = () => {
+  const [activePatient, setActivePatient] = useState(null);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="app-container">
+        <Navbar />
+        <div className="main">
+          <Patients setActivePatient={setActivePatient} />
+          <MainContent activePatient={activePatient} />
+          <RightAside activePatient={activePatient} />
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
