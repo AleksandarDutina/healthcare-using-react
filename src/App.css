@@ -4,7 +4,6 @@ body {
   font-family: "Manrope";
 }
 
-/* Spinner loader styles */
 .loader-container {
   position: fixed;
   top: 0;
@@ -14,19 +13,42 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 1); /* Light background */
-  z-index: 9999; /* Make sure loader stays on top */
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 9999;
+  opacity: 0;
+  animation: fadeIn 3s forwards, fadeOut 0.5s 3s forwards;
 }
 
 .loader {
-  border: 8px solid #f3f3f3; /* Light grey */
-  border-top: 8px solid #3498db; /* Blue */
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
   border-radius: 50%;
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
 }
 
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fade Out Animation */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Spin Animation */
 @keyframes spin {
   0% {
     transform: rotate(0deg);

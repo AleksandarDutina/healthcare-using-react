@@ -7,22 +7,29 @@ const Patients = ({ setActivePatient }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch data from the FastAPI backend
-    fetch("http://127.0.0.1:8000/patients") // Replace with your FastAPI endpoint
-      .then((response) => response.json())
-      .then((data) => {
+    const loadingTimeout = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    const fetchPatients = async () => {
+      try {
+        const res = await fetch("http://127.0.0.1:8000/patients");
+        const data = await res.json();
         setPatients(data);
 
         if (data.length > 0) {
           setActivePatient(data[0]);
           setActivePatientIndex(0);
         }
+      } catch (err) {
+        console.warn(err);
+      } finally {
+        clearTimeout(loadingTimeout);
         setLoading(false);
-      })
-      .catch((error) => {
-        console.warn(error);
-        setLoading(false);
-      });
+      }
+    };
+    fetchPatients();
+    return () => clearTimeout(loadingTimeout);
   }, [setActivePatient]);
 
   if (loading) {
