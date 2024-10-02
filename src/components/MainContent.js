@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Chart from "chart.js/auto";
+import PatientDeepDetails from "./PatientDeepDetails";
+import BottomTable from "./BottomTable";
+import ChartDataPart from "./ChartDataPart";
 
 const MainContent = ({ activePatient }) => {
   const [bloodPressureChart, setBloodPressureChart] = useState(null);
@@ -137,100 +140,12 @@ const MainContent = ({ activePatient }) => {
             </div>
           </div>
           <div className="chart-data-part" id="chart-data-part">
-            {activePatient && (
-              <div>
-                <div className="c-d-block">
-                  <div className="c-d-block-header">
-                    <div className="circle"></div>
-                    <span>Systolic</span>
-                  </div>
-                  <h2>
-                    {
-                      activePatient.diagnosis_history.at(-1).blood_pressure
-                        .systolic.value
-                    }
-                  </h2>
-                  <div className="c-d-block-footer">
-                    <img src="./img/ArrowUp.svg" alt="" />
-                    <span>
-                      {
-                        activePatient.diagnosis_history.at(-1).blood_pressure
-                          .systolic.levels
-                      }
-                    </span>
-                  </div>
-                </div>
-                <div className="c-d-block">
-                  <div className="c-d-block-header">
-                    <div className="circle"></div>
-                    <span>Diastolic</span>
-                  </div>
-                  <h2>
-                    {
-                      activePatient.diagnosis_history.at(-1).blood_pressure
-                        .diastolic.value
-                    }
-                  </h2>
-                  <div className="c-d-block-footer">
-                    <img src="./img/ArrowDown.svg" alt="" />
-                    <span>
-                      {
-                        activePatient.diagnosis_history.at(-1).blood_pressure
-                          .diastolic.levels
-                      }
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )}
+            {activePatient && <ChartDataPart activePatient={activePatient} />}
           </div>
         </div>
         <div id="top-section">
           {activePatient && (
-            <div className="patient-deep-details">
-              <div className="patient-detail">
-                <img src="./img/respiratory rate.svg" alt="" />
-                <h3>Respiratory Rate</h3>
-                <h1>
-                  {
-                    activePatient.diagnosis_history.at(-1).respiratory_rate
-                      .value
-                  }{" "}
-                  bpm
-                </h1>
-                <h4>
-                  {
-                    activePatient.diagnosis_history.at(-1).respiratory_rate
-                      .levels
-                  }
-                </h4>
-              </div>
-              <div className="patient-detail">
-                <img src="./img/temperature.svg" alt="" />
-                <h3>Temperature</h3>
-                <h1>
-                  {activePatient.diagnosis_history.at(-1).temperature.value}°F
-                </h1>
-                <h4>
-                  {activePatient.diagnosis_history.at(-1).temperature.levels}
-                </h4>
-              </div>
-              <div className="patient-detail">
-                <img src="./img/HeartBPM.svg" alt="" />
-                <h3>Heart Rate</h3>
-                <h1>
-                  {activePatient.diagnosis_history.at(-1).heart_rate.value} bpm
-                </h1>
-                <div className="arrow-down">
-                  <span>
-                    <img className="arrDown" src="./img/ArrowDown.svg" alt="" />
-                  </span>
-                  <span className="">
-                    {activePatient.diagnosis_history.at(-1).heart_rate.levels}
-                  </span>
-                </div>
-              </div>
-            </div>
+            <PatientDeepDetails activePatient={activePatient} />
           )}
         </div>
       </div>
@@ -245,14 +160,7 @@ const MainContent = ({ activePatient }) => {
             </tr>
           </thead>
           <tbody>
-            {activePatient &&
-              activePatient.diagnostic_list.map((diag, idx) => (
-                <tr key={idx}>
-                  <td>{diag.name}</td>
-                  <td>{diag.description}</td>
-                  <td>{diag.status}</td>
-                </tr>
-              ))}
+            {activePatient && <BottomTable activePatient={activePatient} />}
           </tbody>
         </table>
       </div>

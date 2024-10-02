@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
 
 const Patients = ({ setActivePatient }) => {
   const [patients, setPatients] = useState([]);
   const [activePatientIndex, setActivePatientIndex] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const username = "coalition";
@@ -24,9 +24,21 @@ const Patients = ({ setActivePatient }) => {
           setActivePatient(data[0]);
           setActivePatientIndex(0);
         }
+        setLoading(false);
       })
-      .catch((error) => console.warn(error));
+      .catch((error) => {
+        console.warn(error);
+        setLoading(false);
+      });
   }, [setActivePatient]);
+
+  if (loading) {
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    );
+  }
 
   const handlePatientClick = (patient, index) => {
     setActivePatient(patient);
