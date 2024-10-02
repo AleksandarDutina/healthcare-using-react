@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Patients from "./components/Patients.js";
 import MainContent from "./components/MainContent.js";
 import RightAside from "./components/RightAside";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 
 const App = () => {
