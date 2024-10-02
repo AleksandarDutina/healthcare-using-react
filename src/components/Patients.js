@@ -7,15 +7,8 @@ const Patients = ({ setActivePatient }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const username = "coalition";
-    const password = "skills-test";
-    const auth = btoa(`${username}:${password}`);
-
-    fetch("https://fedskillstest.coalitiontechnologies.workers.dev", {
-      headers: {
-        Authorization: `Basic ${auth}`,
-      },
-    })
+    // Fetch data from the FastAPI backend
+    fetch("http://127.0.0.1:8000/patients") // Replace with your FastAPI endpoint
       .then((response) => response.json())
       .then((data) => {
         setPatients(data);
@@ -78,7 +71,7 @@ const Patients = ({ setActivePatient }) => {
               </span>
             </div>
             <img
-              class="patient-more"
+              className="patient-more"
               src="./img/more_horiz_FILL0_wght300_GRAD0_opsz24.png"
               alt="More info"
             />
