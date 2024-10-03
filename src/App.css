@@ -1,7 +1,26 @@
 body {
-  background: #f6f7f8;
+  background: #d5e5df;
   box-sizing: border-box;
   font-family: "Manrope";
+}
+
+body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #072635;
 }
 
 .loader-container {
@@ -66,9 +85,9 @@ button {
 
 .navbar {
   width: auto;
-  height: 72px;
-  background: #ffffff;
-  border-radius: 70px;
+  height: 60px;
+  background: #eef4f2;
+  border-radius: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,19 +96,16 @@ button {
   margin-top: 10px;
 }
 
-.navbar-left {
-  flex-basis: 20%;
-}
-
-.navbar-logo {
+.navbar-left h2 {
   width: 211px;
   height: 48px;
   left: 30px;
   position: relative;
+  color: #4a8376;
+  top: 5px;
 }
 
 .navbar-center {
-  flex-basis: 55%;
   display: flex;
   justify-content: center;
   list-style-type: none;
@@ -102,94 +118,38 @@ button {
 
 .navbar-center li a {
   text-decoration: none;
-  color: #072635;
+  color: #4a8376;
   font-size: 14px;
   line-height: 19px;
   font-weight: bold;
   padding: 10px;
   border-radius: 41px;
   transition: all 1s;
-  border: 1px solid #ffffff;
+  border: 1px solid #eef4f2;
 }
 
 .navbar-center li a:hover {
-  background-color: #01f0d0;
-  border: 1px solid #01f0d0;
+  background-color: rgb(156, 238, 105);
+  border: 1px solid rgb(156, 238, 105);
+  color: #000000;
 }
 
 .navbar-link.active {
-  background-color: #01f0d0;
-  border: 1px solid #01f0d0;
+  background-color: rgb(156, 238, 105);
+  border: 1px solid rgb(156, 238, 105);
+  color: #000000;
 }
 
-.active {
-  background-color: #01f0d0;
-  border: 1px solid #01f0d0;
-}
-
-.navbar-center li a img {
+.navbar-center li a i {
   margin-right: 7px;
-  bottom: 3px;
   vertical-align: middle;
   position: relative;
+  width: 17px;
+  height: 17px;
 }
 
-.navbar-right {
-  flex-basis: 20%;
-  display: flex;
-  align-items: center;
-  position: relative;
-  justify-content: flex-end;
-}
-
-.profile-pic {
-  width: 44px;
-  height: 44px;
-  margin-right: 5px;
-}
-
-.profile-info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-right: 10px;
-}
-
-.profile-info .name {
-  font-weight: bold;
-  text-align: left;
-  font-size: 14px;
-}
-
-.profile-info .job {
-  font-size: 14px;
-  text-align: left;
-}
-
-.profile-last {
-  position: relative;
-  padding: 10px 0;
-}
-
-.profile-last img {
-  margin: 0 5px;
-}
-
-.profile-last img:nth-child(1) {
-  margin-left: 10px;
-}
-
-.profile-last img:nth-child(2) {
-  margin-right: 20px;
-}
-
-.profile-last::before {
-  content: "";
-  bottom: 0;
-  width: 1px;
-  height: 44px;
-  position: absolute;
-  background-color: #ededed;
+.navbar-center li:nth-child(5) a i {
+  margin-right: 0px;
 }
 
 /* *************** Navbar Finish *********** */
@@ -209,7 +169,7 @@ button {
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  background-color: #ffffff;
+  background-color: #eef4f2;
   padding: 20px;
   height: 1000px;
 }
@@ -219,6 +179,12 @@ button {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  color: #4a8376;
+}
+
+.aside-header h1 i {
+  margin-right: 10px;
+  color: #4a8376;
 }
 
 .patient-container {
@@ -266,7 +232,7 @@ h1 {
   margin-bottom: 20px;
   position: relative;
   transition: all 0.5s;
-  border: 2px solid #ffffff;
+  border: 2px solid #eef4f2;
   border-radius: 15px;
 }
 
@@ -314,22 +280,27 @@ h1 {
 
 .top-section {
   flex-grow: 2;
-  background-color: #ffffff;
+  background-color: #eef4f2;
   padding: 20px;
   border-radius: 10px;
-  height: 300px;
+  height: 380px;
 }
 
 .title {
   font-size: 24px;
   margin-bottom: 40px;
+  color: #4a8376;
+}
+
+.title i {
+  margin-right: 10px;
 }
 
 .blood-pressure {
   height: 298px;
   width: auto;
   border-radius: 12px;
-  background-color: #f4f0fe;
+  background-color: #cdcbd1;
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
@@ -342,8 +313,8 @@ h1 {
 }
 
 .bloodPressureChart {
-  width: auto;
-  height: auto;
+  width: 600px !important;
+  height: 250px !important;
 }
 
 .c-p-header {
@@ -356,9 +327,15 @@ h1 {
   margin-top: 10px;
 }
 
+.c-p-header i {
+  margin-right: 10px;
+}
+
 .period {
   margin-top: 13px;
   font-size: 14px;
+  right: 30px;
+  position: relative;
 }
 
 .period span {
@@ -425,7 +402,7 @@ h1 {
   border-radius: 12px;
   width: 200px;
   height: auto;
-  background: #e0f3fa;
+  background: #c2e6f3;
   padding: 20px;
   margin-right: 10px;
 }
@@ -458,19 +435,27 @@ h4 {
 
 .patient-detail:nth-child(3) {
   margin-right: 0;
-  background-color: #ffe6f1;
+  background-color: #f7c6dc;
 }
 
 .patient-detail:nth-child(2) {
-  background-color: #ffe6e9;
+  background-color: #fbcdd2;
 }
 
 .bottom-section {
   flex-grow: 1;
-  background-color: #ffffff;
+  background-color: #eef4f2;
   padding: 20px;
   border-radius: 10px;
   height: 100px;
+}
+
+.bottom-section h1 {
+  color: #4a8376;
+}
+
+.bottom-section h1 i {
+  margin-right: 10px;
 }
 
 .tb {
@@ -479,6 +464,7 @@ h4 {
 
 .scroll-thin {
   overflow-y: auto;
+  position: relative;
 }
 
 .scroll-thin::-webkit-scrollbar {
@@ -508,8 +494,30 @@ h4 {
   margin-top: 40px;
 }
 
+.diagnostic-table th:nth-child(1),
+.diagnostic-table td:nth-child(1) {
+  width: 25%;
+}
+
+.diagnostic-table th:nth-child(2),
+.diagnostic-table td:nth-child(2) {
+  width: 50%;
+}
+
+.diagnostic-table th:nth-child(3),
+.diagnostic-table td:nth-child(3) {
+  width: 25%;
+}
+
+.t-2 {
+  position: relative;
+  margin-top: 0;
+  height: 135px;
+  display: block;
+}
+
 .diagnostic-table thead {
-  background-color: #f6f7f8;
+  background-color: #d4d6d8;
   border-radius: 24px;
 }
 
@@ -552,7 +560,7 @@ h4 {
 
 .top-aside {
   flex-grow: 3;
-  background-color: #ffffff;
+  background-color: #eef4f2;
   padding: 20px;
   border-radius: 16px;
   text-align: center;
@@ -597,7 +605,7 @@ h4 {
   padding: 10px;
   border-radius: 41px;
   transition: all 1s;
-  border: 1px solid #ffffff;
+  border: 1px solid #eef4f2;
   width: 150px;
   height: 21px;
   justify-self: center;
@@ -614,10 +622,18 @@ h4 {
 
 .bottom-aside {
   flex-grow: 1;
-  background-color: #ffffff;
+  background-color: #eef4f2;
   padding: 20px;
   border-radius: 16px;
   height: 200px;
+}
+
+.bottom-aside h1 {
+  color: #4a8376;
+}
+
+.bottom-aside h1 i {
+  margin-right: 10px;
 }
 
 .lab-results {

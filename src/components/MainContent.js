@@ -119,11 +119,15 @@ const MainContent = ({ activePatient }) => {
   return (
     <main className="main-content">
       <div className="top-section">
-        <h1 className="title">Diagnosis History</h1>
+        <h1 className="title">
+          <i class="fas fa-file-medical-alt"></i>Diagnosis History
+        </h1>
         <div className="blood-pressure">
           <div className="chart-part">
             <div className="c-p-header">
-              <h2>Blood Pressure</h2>
+              <h2>
+                <i class="fas fa-heartbeat"></i>Blood Pressure
+              </h2>
               <div className="period">
                 <span>Last 6 months</span>
                 <img
@@ -149,8 +153,10 @@ const MainContent = ({ activePatient }) => {
           )}
         </div>
       </div>
-      <div className="bottom-section scroll-thin">
-        <h1>Diagnostic List</h1>
+      <div className="bottom-section">
+        <h1>
+          <i class="fas fa-list"></i>Diagnostic List
+        </h1>
         <table className="diagnostic-table">
           <thead>
             <tr>
@@ -159,10 +165,12 @@ const MainContent = ({ activePatient }) => {
               <th>Status</th>
             </tr>
           </thead>
-          <tbody>
-            {activePatient && <BottomTable activePatient={activePatient} />}
-          </tbody>
         </table>
+        <div className="">
+          <table className="diagnostic-table t-2 scroll-thin">
+            {activePatient && <BottomTable activePatient={activePatient} />}
+          </table>
+        </div>
       </div>
     </main>
   );

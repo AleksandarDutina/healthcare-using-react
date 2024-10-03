@@ -2,7 +2,7 @@ import React from "react";
 
 export default function BottomTable({ activePatient }) {
   return (
-    <div>
+    <tbody>
       {activePatient.diagnostic_list.map((diag, idx) => (
         <tr key={idx}>
           <td>{diag.name}</td>
@@ -10,6 +10,6 @@ export default function BottomTable({ activePatient }) {
           <td>{diag.status}</td>
         </tr>
       ))}
-    </div>
+    </tbody>
   );
 }

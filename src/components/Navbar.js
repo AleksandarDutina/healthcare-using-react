@@ -7,56 +7,63 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <img src="./img/TestLogo.png" alt="" className="navbar-logo" />
+        <h2>
+          <i class="fas fa-clinic-medical"></i> HealthCare
+        </h2>
       </div>
       <ul className="navbar-center">
         <li>
           <Link to="" className="navbar-link">
-            <img
+            {/* <img
               src="./img/home_FILL0_wght300_GRAD0_opsz24.png"
               alt="Overview"
-            />
+            /> */}
+            <i class="fas fa-home"></i>
             Overview
           </Link>
         </li>
         <li>
           <Link id="fetch-patient-data" className="navbar-link active">
-            <img
+            {/* <img
               src="./img/group_FILL0_wght300_GRAD0_opsz24.png"
               alt="Patients"
-            />
+            /> */}
+            <i class="fas fa-user-injured"></i>
             Patients
           </Link>
         </li>
         <li>
           <Link to="" className="navbar-link">
-            <img
+            {/* <img
               src="./img/calendar_today_FILL0_wght300_GRAD0_opsz24.png"
               alt="Schedule"
-            />
+            /> */}
+            <i class="fas fa-calendar-alt"></i>
             Schedule
           </Link>
         </li>
         <li>
           <Link to="" class="navbar-link">
-            <img
+            {/* <img
               src="./img/chat_bubble_FILL0_wght300_GRAD0_opsz24.png"
               alt="Message"
-            />
+            /> */}
+            <i class="fas fa-envelope"></i>
             Message
           </Link>
         </li>
         <li>
           <Link to="" class="navbar-link">
-            <img
+            {/* <img
               src="./img/credit_card_FILL0_wght300_GRAD0_opsz24.png"
               alt="Transactions"
-            />
+            /> */}
+            <i class="fas fa-dollar-sign"></i>
             Transactions
           </Link>
         </li>
       </ul>
-      <div className="navbar-right">
+      {/* <div className="navbar-right">
         <img className="profile-pic" src={ProfilePic} alt="Dr. Jose Simmons" />
         <div className="profile-info">
           <span className="name">Dr. Jose Simmons</span>
@@ -72,7 +79,7 @@ const Navbar = () => {
             alt="More"
           />
         </div>
-      </div>
+      </div> */}
     </nav>
   );
 };

@@ -48,14 +48,9 @@ const Patients = ({ setActivePatient }) => {
   return (
     <aside className="left-aside">
       <div className="aside-header">
-        <h1>Patients</h1>
-        <Link to="#">
-          <img
-            className="search-icon"
-            src="./img/search_FILL0_wght300_GRAD0_opsz24.png"
-            alt="Search"
-          />
-        </Link>
+        <h1>
+          <i class="fas fa-users"></i>Patients
+        </h1>
       </div>
       <div className="patient-container">
         {patients.map((patient, index) => (
