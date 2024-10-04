@@ -118,7 +118,7 @@ const MainContent = ({ activePatient }) => {
 
   return (
     <main className="main-content">
-      <div className="top-section">
+      <div className="top-section card">
         <h1 className="title">
           <i class="fas fa-file-medical-alt"></i>Diagnosis History
         </h1>

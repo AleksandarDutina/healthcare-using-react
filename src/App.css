@@ -23,7 +23,7 @@ body::-webkit-scrollbar-thumb:hover {
   background-color: #072635;
 }
 
-.loader-container {
+.pulse-loader-container {
   position: fixed;
   top: 0;
   left: 0;
@@ -34,46 +34,24 @@ body::-webkit-scrollbar-thumb:hover {
   align-items: center;
   background-color: rgba(255, 255, 255, 1);
   z-index: 9999;
-  opacity: 0;
-  animation: fadeIn 3s forwards, fadeOut 0.5s 3s forwards;
 }
 
-.loader {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
+.pulse-loader {
+  width: 30px;
+  height: 30px;
+  background-color: #34dba3;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1s linear infinite;
+  animation: pulse 1.5s infinite;
 }
 
-/* Fade In Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Fade Out Animation */
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
-/* Spin Animation */
-@keyframes spin {
+@keyframes pulse {
   0% {
-    transform: rotate(0deg);
+    transform: scale(1);
+    opacity: 1;
   }
   100% {
-    transform: rotate(360deg);
+    transform: scale(1.5);
+    opacity: 0;
   }
 }
 
@@ -658,3 +636,13 @@ h5 {
   margin-top: 0;
   font-weight: normal;
 }
+
+/* .card {
+  container-type: inline-size;
+}
+
+@container (max-width: 400px) {
+  .patient-deep-details {
+    flex-direction: column;
+  }
+} */

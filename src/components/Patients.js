@@ -1,43 +1,43 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+
+const fetchPatients = async () => {
+  const res = await fetch("http://127.0.0.1:8000/patients");
+  if (!res.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return res.json();
+};
 
 const Patients = ({ setActivePatient }) => {
-  const [patients, setPatients] = useState([]);
-  const [activePatientIndex, setActivePatientIndex] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const {
+    data: patients = [],
+    isLoading,
+    error,
+  } = useQuery({
+    queryKey: ["patients"],
+    queryFn: fetchPatients,
+  });
 
-  useEffect(() => {
-    const loadingTimeout = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+  const [activePatientIndex, setActivePatientIndex] = React.useState(null);
 
-    const fetchPatients = async () => {
-      try {
-        const res = await fetch("http://127.0.0.1:8000/patients");
-        const data = await res.json();
-        setPatients(data);
+  React.useEffect(() => {
+    if (patients.length > 0) {
+      setActivePatient(patients[0]);
+      setActivePatientIndex(0);
+    }
+  }, [patients, setActivePatient]);
 
-        if (data.length > 0) {
-          setActivePatient(data[0]);
-          setActivePatientIndex(0);
-        }
-      } catch (err) {
-        console.warn(err);
-      } finally {
-        clearTimeout(loadingTimeout);
-        setLoading(false);
-      }
-    };
-    fetchPatients();
-    return () => clearTimeout(loadingTimeout);
-  }, [setActivePatient]);
-
-  if (loading) {
+  if (isLoading) {
     return (
       <div className="loader-container">
         <div className="loader"></div>
       </div>
     );
+  }
+
+  if (error) {
+    return <div>Error loading patients: {error.message}</div>;
   }
 
   const handlePatientClick = (patient, index) => {
@@ -49,7 +49,7 @@ const Patients = ({ setActivePatient }) => {
     <aside className="left-aside">
       <div className="aside-header">
         <h1>
-          <i class="fas fa-users"></i>Patients
+          <i className="fas fa-users"></i>Patients
         </h1>
       </div>
       <div className="patient-container">
